@@ -1,5 +1,1 @@
-{
-  "tabWidth": 4,
-  "useTabs": false,
-  "singleQuote": false
-}
+{ "quoteProps": "as-needed", "arrowParens": "avoid", "printWidth": 100, "bracketSpacing": false, "proseWrap": "always", "trailingComma": "es5", "semi": true, "tabWidth": 4, "useTabs": false, "singleQuote": false }
