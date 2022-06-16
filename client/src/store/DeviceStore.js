@@ -2,62 +2,13 @@ import {makeAutoObservable} from "mobx";
 
 export default class DeviceStore {
     constructor() {
-        this._types = [
-            {id: 1, name: "Freezer"},
-            {id: 2, name: "Phone"},
-            {id: 3, name: "Radio"},
-            {id: 4, name: "E-book"},
-            {id: 5, name: "Keyboard"},
-            {id: 6, name: "Mouse"},
-            {id: 7, name: "Charger"},
-        ];
+        this._types = [];
         this._selectedType = {};
 
-        this._brands = [
-            {id: 1, name: "Apple"},
-            {id: 2, name: "Samsung"},
-            {id: 3, name: "Lenovo"},
-            {id: 4, name: "Asus"},
-        ];
+        this._brands = [];
         this._selectedBrand = {};
 
-        this._devices = [
-            {
-                id: 1,
-                name: "IPhone10",
-                price: 20000,
-                rating: 5,
-                img: "https://cdn.multitronic.fi/images/prod/6/0/MLPK3KG-A-1.jpg",
-            },
-            {
-                id: 2,
-                name: "IPhone10",
-                price: 20000,
-                rating: 5,
-                img: "https://cdn.multitronic.fi/images/prod/6/0/MLPK3KG-A-1.jpg",
-            },
-            {
-                id: 3,
-                name: "IPhone10",
-                price: 20000,
-                rating: 5,
-                img: "https://cdn.multitronic.fi/images/prod/6/0/MLPK3KG-A-1.jpg",
-            },
-            {
-                id: 4,
-                name: "IPhone10",
-                price: 20000,
-                rating: 5,
-                img: "https://cdn.multitronic.fi/images/prod/6/0/MLPK3KG-A-1.jpg",
-            },
-            {
-                id: 5,
-                name: "IPhone10",
-                price: 20000,
-                rating: 5,
-                img: "https://cdn.multitronic.fi/images/prod/6/0/MLPK3KG-A-1.jpg",
-            },
-        ];
+        this._devices = [];
         this._selectedDevice = {};
         makeAutoObservable(this);
     }
@@ -70,13 +21,13 @@ export default class DeviceStore {
     }
 
     setBrands(brands) {
-        this.brands = brands;
+        this._brands = brands;
     }
     setSelectedBrand(brand) {
         this._selectedBrand = brand;
     }
-    setDevices(brands) {
-        this.brands = brands;
+    setDevices(devices) {
+        this._devices = devices;
     }
     setSelectedDevice(device) {
         this._selectedDevice = device;

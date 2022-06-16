@@ -3,10 +3,16 @@ import {useContext} from "react";
 import {Button, Container, Nav, Navbar} from "react-bootstrap";
 import {NavLink, useNavigate} from "react-router-dom";
 import {Context} from "../index";
-import {ADMIN_ROUTE, SHOP_ROUTE, LOGIN_ROUTE} from "../utils/consts";
+import {ADMIN_ROUTE, SHOP_ROUTE, LOGIN_ROUTE, BASKET_ROUTE} from "../utils/consts";
 const NavBar = observer(() => {
     const navigate = useNavigate();
     const {user} = useContext(Context);
+    const logout = () => {
+        user.setIsAuth(false);
+        user.setUser({});
+        localStorage.removeItem("token");
+        navigate(LOGIN_ROUTE);
+    };
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
@@ -18,17 +24,16 @@ const NavBar = observer(() => {
                         <Button variant={"outline-light"} onClick={() => navigate(ADMIN_ROUTE)}>
                             Admin
                         </Button>
-                        <Button variant={"outline-light"} onClick={() => navigate(LOGIN_ROUTE)}>
+                        {/* <Button variant={"outline-light"} onClick={() => navigate(BASKET_ROUTE)}>
+                            Basket
+                        </Button> */}
+                        <Button variant={"outline-light"} onClick={logout}>
                             Logout
                         </Button>
                     </Nav>
                 ) : (
                     <Nav className="ml-auto">
-                        <Button
-                            variant={"outline-light"}
-                            onClick={() => navigate(LOGIN_ROUTE)}
-                            // onClick={() => navigate(LOGIN_ROUTE)}
-                        >
+                        <Button variant={"outline-light"} onClick={() => navigate(LOGIN_ROUTE)}>
                             Login
                         </Button>
                     </Nav>
