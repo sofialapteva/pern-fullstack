@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect, useCallback, useMemo} from "react";
+import {useState} from "react";
 import * as B from "react-bootstrap";
 import {CreateBrand, CreateDevice, CreateType} from "../components/modals";
 function Admin() {

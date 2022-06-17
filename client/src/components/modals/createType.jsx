@@ -1,6 +1,14 @@
-import React, {useState, useContext, useEffect, useCallback, useMemo} from "react";
+import {useState} from "react";
 import * as B from "react-bootstrap";
-const createType = ({show, onHide}) => {
+import {createType} from "../../http/deviceAPI";
+const CreateType = ({show, onHide}) => {
+    const [type, setType] = useState("");
+    const addType = () => {
+        createType({name: type}).then(() => {
+            setType("");
+            onHide();
+        });
+    };
     return (
         <B.Modal
             show={show}
@@ -14,14 +22,19 @@ const createType = ({show, onHide}) => {
             </B.Modal.Header>
             <B.Modal.Body>
                 <B.Form>
-                    <B.Form.Control placeholder="Type the name of the type" />
+                    <B.Form.Control
+                        value={type}
+                        placeholder="Type the name of the type"
+                        onChange={e => setType(e.target.value)}
+                        autoFocus
+                    />
                 </B.Form>
             </B.Modal.Body>
             <B.Modal.Footer>
                 <B.Button variant="outline-danger" onClick={onHide}>
                     Close
                 </B.Button>
-                <B.Button variant="outline-primary" onClick={onHide}>
+                <B.Button variant="outline-primary" onClick={addType}>
                     Add type
                 </B.Button>
             </B.Modal.Footer>
@@ -29,4 +42,4 @@ const createType = ({show, onHide}) => {
     );
 };
 
-export default createType;
+export default CreateType;

@@ -1,11 +1,18 @@
-import React, {useState, useContext, useEffect, useCallback, useMemo} from "react";
 import {observer} from "mobx-react-lite";
-import {Context} from "../index";
+import {useContext} from "react";
 import * as B from "react-bootstrap";
+import {Context} from "../index";
 const TypeBar = observer(() => {
     const {device} = useContext(Context);
     return (
         <B.ListGroup>
+            <B.ListGroup.Item
+                style={{cursor: "pointer"}}
+                onClick={() => device.setSelectedType({})}
+                active={!device.selectedType.id}
+            >
+                All
+            </B.ListGroup.Item>
             {device.types.map(type => (
                 <B.ListGroup.Item
                     style={{cursor: "pointer"}}

@@ -1,8 +1,8 @@
 import {useContext} from "react";
 import {Navigate, Route, Routes} from "react-router-dom";
+import {Context} from "../index";
 import {authRoutes, publicRoutes} from "../routes";
 import {SHOP_ROUTE} from "../utils/consts";
-import {Context} from "../index";
 function AppRouter() {
     const {user} = useContext(Context);
     console.log(user.isAuth);
